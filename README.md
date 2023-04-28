@@ -39,42 +39,42 @@ Projeto Air Hockey
 ## Estruturando cada classe:
 
 - Classe Jogo:
-    • mesa: Mesa - mesa do jogo
-    • jogador1: Jogador - jogador controlado pelo usuário
-    • jogador2: Jogador - jogador controlado pela máquina
-    • disco: Disco - disco utilizado no jogo
-    • vencedor: int - indica o jogador que venceu a partida (0 para empate)
+    * mesa: Mesa - mesa do jogo
+    * jogador1: Jogador - jogador controlado pelo usuário
+    * jogador2: Jogador - jogador controlado pela máquina
+    * disco: Disco - disco utilizado no jogo
+    * vencedor: int - indica o jogador que venceu a partida (0 para empate)
 
 - Classe Mesa:
-    • comprimento: float - comprimento da mesa
-    • largura: float - largura da mesa
-    • cor: vec3 - cor da mesa
-    • golEsquerda: Gol - gol esquerda da mesa
-    • golDireita: Gol - gol direita da mesa
+    * comprimento: float - comprimento da mesa
+    * largura: float - largura da mesa
+    * cor: vec3 - cor da mesa
+    * golEsquerda: Gol - gol esquerda da mesa
+    * golDireita: Gol - gol direita da mesa
 
 - Classe Gol:
-    • comprimento: float - comprimento do gol
-    • largura: float - largura do gol
-    • cor: vec3 - cor do gol
-    • posicao: vec2 - posição do gol na mesa
-    • lado: int - lado do gol na mesa (0 para esquerda e 1 para direita)
+    * comprimento: float - comprimento do gol
+    * largura: float - largura do gol
+    * cor: vec3 - cor do gol
+    * posicao: vec2 - posição do gol na mesa
+    * lado: int - lado do gol na mesa (0 para esquerda e 1 para direita)
 
 - Classe Jogador:
-    • raio: float - raio do jogador
-    • cor: vec3 - cor do jogador
-    • posicao: vec2 - posição do jogador na mesa
-    • velocidade: vec2 - velocidade do jogador na mesa
-    • tipo: int - tipo do jogador (0 para usuário e 1 para máquina)
+    * raio: float - raio do jogador
+    * cor: vec3 - cor do jogador
+    * posicao: vec2 - posição do jogador na mesa
+    * velocidade: vec2 - velocidade do jogador na mesa
+    * tipo: int - tipo do jogador (0 para usuário e 1 para máquina)
 
 - Classe Disco:
-    • raio: float - raio do disco
-    • cor: vec3 - cor do disco
-    • posicao: vec2 - posição do disco na mesa
-    • velocidade: vec2 - velocidade do disco na mesa
+    * raio: float - raio do disco
+    * cor: vec3 - cor do disco
+    * posicao: vec2 - posição do disco na mesa
+    * velocidade: vec2 - velocidade do disco na mesa
 
 - Classe AI (opcional):
-    • dificuldade: int - nível de dificuldade do jogador controlado pela máquina (0 para fácil, 1 para médio e 2 para difícil)
-    • comportamento: string - comportamento do jogador controlado pela máquina (ex: defensivo, agressivo, etc.)
+    * dificuldade: int - nível de dificuldade do jogador controlado pela máquina (0 para fácil, 1 para médio e 2 para difícil)
+    * comportamento: string - comportamento do jogador controlado pela máquina (ex: defensivo, agressivo, etc.)
 
 
 ## Inspiração:
