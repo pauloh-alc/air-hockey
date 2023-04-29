@@ -13,6 +13,7 @@ SOURCES += \
         src/player.cpp \
         src/game.cpp \
         src/table.cpp \
+        src/shapes.cpp \
         main.cpp
 
 # Concfigurações dos headers
@@ -22,7 +23,8 @@ HEADERS += \
     include/goal.h \
     include/player.h \
     include/game.h \
-    include/table.h
+    include/table.h \
+    include/shapes.h
 
 # Configuração das bibliotecas
 LIBS += \
