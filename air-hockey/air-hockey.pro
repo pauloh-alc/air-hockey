@@ -8,21 +8,21 @@ TARGET = air-hockey
 # Configuração dos arquivos fontes
 SOURCES += \
         src/ai.cpp \
-        src/disco.cpp \
-        src/gol.cpp \
-        src/jogador.cpp \
-        src/jogo.cpp \
-        src/mesa.cpp \
+        src/puck.cpp \
+        src/goal.cpp \
+        src/player.cpp \
+        src/game.cpp \
+        src/table.cpp \
         main.cpp
 
 # Concfigurações dos headers
 HEADERS += \
     include/ai.h \
-    include/disco.h \
-    include/gol.h \
-    include/jogador.h \
-    include/jogo.h \
-    include/mesa.h
+    include/puck.h \
+    include/goal.h \
+    include/player.h \
+    include/game.h \
+    include/table.h
 
 # Configuração das bibliotecas
 LIBS += \
