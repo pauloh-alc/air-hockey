@@ -2,15 +2,17 @@
 #include <GL/glut.h>
 #include <shapes.h>
 #include <colors.h>
+#include <puck.h>
 
 using namespace std;
 
 const char *GAME_NAME = "Air Hockey";
 const int WINDOW_HEIGHT = 700;
 const int WINDOW_WIDTH = 500;
-const int HEIGHT_AREA = 700;
-const int WIDTH_AREA = 500;
+const int HEIGHT_AREA = 6;
+const int WIDTH_AREA = 4;
 
+Puck puck;
 
 void init()
 {
@@ -47,13 +49,7 @@ void draw()
 {
     glClear(GL_COLOR_BUFFER_BIT);
     setProjection();
-
-    glColor3f(BLUE[0], BLUE[1], BLUE[2]);
-
-    glTranslatef(250, 350, 0);
-    glScalef(15, 15, 1);
-    Shapes::circle(36);
-
+    puck.draw();
     glutSwapBuffers();
 }
 
