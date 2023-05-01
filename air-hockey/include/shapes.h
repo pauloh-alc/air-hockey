@@ -6,7 +6,7 @@ class Shapes
 {
 public:
     Shapes();
-    static void circle(int divisions);
+    static void circle(int divisions, float radius);
     static void square();
 };
 
