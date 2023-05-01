@@ -49,6 +49,7 @@ void draw()
     setProjection();
 
     glColor3f(BLUE[0], BLUE[1], BLUE[2]);
+
     glTranslatef(250, 350, 0);
     glScalef(15, 15, 1);
     Shapes::circle(36);
