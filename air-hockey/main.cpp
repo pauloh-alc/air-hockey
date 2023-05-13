@@ -3,6 +3,7 @@
 #include <shapes.h>
 #include <colors.h>
 #include <puck.h>
+#include <player.h>
 #include <sizes.h>
 #include <table.h>
 
@@ -12,6 +13,7 @@ const char *GAME_NAME = "Air Hockey";
 
 Puck puck;
 Table table;
+Player player1;
 
 void init()
 {
@@ -50,6 +52,7 @@ void draw()
     setProjection();
     table.draw();
     puck.draw();
+    player1.draw();
     glutSwapBuffers();
 }
 
