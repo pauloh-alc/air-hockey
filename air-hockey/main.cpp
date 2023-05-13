@@ -3,16 +3,15 @@
 #include <shapes.h>
 #include <colors.h>
 #include <puck.h>
+#include <sizes.h>
+#include <table.h>
 
 using namespace std;
 
 const char *GAME_NAME = "Air Hockey";
-const int WINDOW_HEIGHT = 700;
-const int WINDOW_WIDTH = 500;
-const int HEIGHT_AREA = 6;
-const int WIDTH_AREA = 4;
 
 Puck puck;
+Table table;
 
 void init()
 {
@@ -49,6 +48,7 @@ void draw()
 {
     glClear(GL_COLOR_BUFFER_BIT);
     setProjection();
+    table.draw();
     puck.draw();
     glutSwapBuffers();
 }
