@@ -1,6 +1,3 @@
-#include "ai.h"
+#include "../include/ai.h"
 
-AI::AI()
-{
-
-}
+AI::AI() {}

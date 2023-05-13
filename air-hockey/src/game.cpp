@@ -1,3 +1,3 @@
-#include "game.h"
+#include "../include/game.h"
 
-Game::game() {}
+Game::Game() {}

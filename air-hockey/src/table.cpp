@@ -1,3 +1,3 @@
-#include "table.h"
+#include "../include/table.h"
 
 Table::Table() {}

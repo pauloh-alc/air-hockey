@@ -1,3 +1,3 @@
-#include "puck.h"
+#include "../include/puck.h"
 
 Puck::Puck() {}

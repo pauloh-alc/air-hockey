@@ -1,3 +1,3 @@
-#include "goal.h"
+#include "../include/goal.h"
 
 Goal::Goal() {}
