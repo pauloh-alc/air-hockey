@@ -23,6 +23,7 @@ HEADERS += \
     include/goal.h \
     include/player.h \
     include/game.h \
+    include/sizes.h \
     include/table.h \
     include/shapes.h
 
