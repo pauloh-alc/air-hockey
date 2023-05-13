@@ -10,6 +10,7 @@ Player::Player()
     radius = 3;
     size = 15;
     speed = 0;
+
 }
 
 void Player::draw()
