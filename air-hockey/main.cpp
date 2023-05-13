@@ -4,6 +4,7 @@
 #include <colors.h>
 #include <puck.h>
 #include <player.h>
+#include <ai.h>
 #include <sizes.h>
 #include <table.h>
 
@@ -14,6 +15,7 @@ const char *GAME_NAME = "Air Hockey";
 Puck puck;
 Table table;
 Player player1;
+AI player2;
 
 void init()
 {
@@ -53,6 +55,7 @@ void draw()
     table.draw();
     puck.draw();
     player1.draw();
+    player2.draw();
     glutSwapBuffers();
 }
 
