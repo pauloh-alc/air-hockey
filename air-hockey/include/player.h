@@ -3,15 +3,16 @@
 #include "glm/glm.hpp"
 
 class Player {
-    private:
-        glm::vec2 position;
-        float radius;
-        glm::vec3 color;
-        float size;
-        float speed;
-    public:
-        Player();
-        void draw();
+private:
+  glm::vec2 position;
+  float radius;
+  glm::vec3 color;
+  float size;
+  float speed;
+
+public:
+  Player();
+  void draw();
 };
 
 #endif // PLAYER_H
