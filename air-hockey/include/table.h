@@ -12,6 +12,10 @@ class Table {
 
     public:
         Table();
+        float get_border_width()
+        {
+            return border_width;
+        }
         void draw();
 };
 
