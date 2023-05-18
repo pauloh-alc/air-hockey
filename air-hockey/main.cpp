@@ -47,6 +47,19 @@ void setProjection()
     glLoadIdentity();
 }
 
+void move_player1(int key, int x, int y)
+{
+    float move_step = 8.0;
+
+    switch(key) {
+        case GLUT_KEY_LEFT:  player1.set_position_x(player1.get_position_x() - move_step); break;
+        case GLUT_KEY_RIGHT: player1.set_position_x(player1.get_position_x() + move_step); break;
+        case GLUT_KEY_DOWN:  player1.set_position_y(player1.get_position_y() - move_step); break;
+        case GLUT_KEY_UP:    player1.set_position_y(player1.get_position_y() + move_step); break;
+    }
+    glutPostRedisplay();
+}
+
 
 void draw()
 {
@@ -64,6 +77,7 @@ int main(int argc, char** argv)
     initWindow(argc, argv);
     init();
     glutDisplayFunc(draw);
+    glutSpecialFunc(move_player1);
     glutMainLoop();
     return 0;
 }
