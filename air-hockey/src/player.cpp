@@ -4,11 +4,11 @@
 #include "sizes.h"
 
 Player::Player() {
-  position = glm::vec2(WIDTH_AREA / 2.0f, HEIGHT_AREA / 7.0f);
-  color = glm::vec3(RED[0], RED[1], RED[2]);
-  radius = 3;
-  size = 15;
-  speed = 0;
+    position = glm::vec2(WIDTH_AREA / 2.0f, HEIGHT_AREA / 7.0f);
+    color = glm::vec3(RED[0], RED[1], RED[2]);
+    radius = 3;
+    size = 15;
+    speed = 0;
 }
 
 void Player::draw()

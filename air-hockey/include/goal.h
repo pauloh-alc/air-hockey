@@ -2,8 +2,8 @@
 #define GOAL_H
 
 class Goal {
-public:
-  Goal();
+    public:
+        Goal();
 };
 
 #endif // GOAL_H
