@@ -11,11 +11,12 @@ Player::Player() {
   speed = 0;
 }
 
-void Player::draw() {
-  glPushMatrix();
-  glTranslatef(position.x, position.y, 0);
-  glScalef(size, size, 1);
-  glColor3f(color.r, color.g, color.b);
-  Shapes::circle(36, radius);
-  glPopMatrix();
+void Player::draw()
+{
+    glPushMatrix();
+        glTranslatef(position.x, position.y, 0);
+        glScalef(size, size, 1);
+        glColor3f(color.r, color.g, color.b);
+        Shapes::circle(36, radius);
+    glPopMatrix();
 }

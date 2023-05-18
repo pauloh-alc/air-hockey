@@ -10,9 +10,13 @@ private:
   glm::vec3 border_color;
   float border_width;
 
-public:
-  Table();
-  void draw();
+    public:
+        Table();
+        float get_border_width()
+        {
+            return border_width;
+        }
+        void draw();
 };
 
 #endif // TABLE_H
