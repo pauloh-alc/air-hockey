@@ -49,16 +49,43 @@ void setProjection()
 
 void move_player1(int key, int x, int y)
 {
-    float move_step = 8.0;
+    int step = 8;
+
+    float player1_x = player1.get_position_x();
+    float player1_y = player1.get_position_y();
+
+    float limit_max_x = WIDTH_AREA - (player1.get_size() * player1.get_radius()) - table.get_border_width();
+    float limit_max_y = (HEIGHT_AREA - (player1.get_size() * player1.get_radius())) / 2.0f - table.get_border_width();
+    float limit_min_x = player1.get_size() * player1.get_radius() + table.get_border_width();
+    float limit_min_y = player1.get_size() * player1.get_radius() + table.get_border_width();
 
     switch(key) {
-        case GLUT_KEY_LEFT:  player1.set_position_x(player1.get_position_x() - move_step); break;
-        case GLUT_KEY_RIGHT: player1.set_position_x(player1.get_position_x() + move_step); break;
-        case GLUT_KEY_DOWN:  player1.set_position_y(player1.get_position_y() - move_step); break;
-        case GLUT_KEY_UP:    player1.set_position_y(player1.get_position_y() + move_step); break;
+        case GLUT_KEY_LEFT:
+            player1_x -= step;
+            if (player1_x < limit_min_x) player1_x = limit_min_x;
+        break;
+
+        case GLUT_KEY_RIGHT:
+            player1_x += step;
+            if (player1_x > limit_max_x) player1_x = limit_max_x;
+        break;
+
+        case GLUT_KEY_DOWN:
+            player1_y -= step;
+            if (player1_y < limit_min_y) player1_y = limit_min_y;
+        break;
+
+        case GLUT_KEY_UP:
+            player1_y += step;
+            if (player1_y > limit_max_y) player1_y = limit_max_y;
+        break;
     }
+
+    player1.set_position_x(player1_x);
+    player1.set_position_y(player1_y);
     glutPostRedisplay();
 }
+
 
 
 void draw()

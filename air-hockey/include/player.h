@@ -22,6 +22,16 @@ class Player {
             return position.y;
         }
 
+        float get_radius()
+        {
+            return radius;
+        }
+
+        float get_size()
+        {
+            return size;
+        }
+
         void set_position_x(float x)
         {
             position.x = x;
@@ -31,6 +41,7 @@ class Player {
         {
             position.y = y;
         }
+
         void set_position_x();
         void draw();
 };
