@@ -9,6 +9,7 @@
 #include <sizes.h>
 #include <table.h>
 #include <set>
+#define FPS 60
 
 using namespace std;
 
@@ -78,6 +79,27 @@ void release_key(int key, int x, int y) {
     keys.erase(key);
 }
 
+//Função que será executada periodicamente (serve para realizar as modificações entre um frame e o próximo da animação)
+void timer(int v){
+    //A função glutTimerFunc define que a função 'timer' irá executar novamente daqui a uma certa quantidade de tempo em milissegundos.
+    //Se deseja executar 60 frames por segundo, o tempo entre um frame e o próximo é 1000/60 milissegundos
+    //Atenção! Não chame timer dentro de timer. Isso criará uma recursão infinita.
+    glutTimerFunc(1000.0/FPS, timer, 0);
+
+    //Realize as modificações entre um frame e o próximo aqui
+    //Como o objeto B move-se uma distância maior do que A entre cada frame, ele irá parecer andar mais rápido na tela
+    puck.move_puck(0.3);
+
+    //Após as modificações, a tela deve ser atualizada
+    glutPostRedisplay();
+}
+
+void verify_collision() {
+    if (player1.check_collision(puck)) {
+        glutTimerFunc(1000.0/FPS, timer, 0);
+    }
+}
+
 void draw() {
     glClear(GL_COLOR_BUFFER_BIT);
     set_projection();
@@ -85,7 +107,7 @@ void draw() {
     puck.draw();
     player1.draw();
     player2.draw();
-
+    verify_collision();
     goal1.set_position_y(14.0f);
     goal1.draw();
     goal2.set_position_y(HEIGHT_AREA - 14.0f);

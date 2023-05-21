@@ -1,6 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 #include "glm/glm.hpp"
+#include "puck.h"
 
 class Player {
     private:
@@ -39,6 +40,7 @@ class Player {
 
         void set_position_x();
         void draw();
+        bool check_collision(Puck& puck);
 };
 
 #endif // PLAYER_H
