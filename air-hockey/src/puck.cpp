@@ -19,3 +19,7 @@ void Puck::draw() {
         Shapes::circle(36, radius);
     glPopMatrix();
 }
+
+void Puck::move_puck(float distance) {
+    set_position_y(get_position_y() + distance);
+}

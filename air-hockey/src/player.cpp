@@ -2,6 +2,8 @@
 #include "colors.h"
 #include "shapes.h"
 #include "sizes.h"
+#include "puck.h"
+#include <iostream>
 
 Player::Player() {
     position = glm::vec2(WIDTH_AREA / 2.0f, HEIGHT_AREA / 7.0f);
@@ -19,4 +21,17 @@ void Player::draw()
         glColor3f(color.r, color.g, color.b);
         Shapes::circle(36, radius);
     glPopMatrix();
+}
+
+bool Player::check_collision(Puck& puck) {
+
+    glm::vec2 distance_player1_puck = position - puck.get_position();
+    float radius_player1_puck = radius * size + puck.get_radius() * puck.get_size();
+
+    bool result = glm::length(distance_player1_puck) < radius_player1_puck;
+    float d = glm::length(distance_player1_puck);
+    std::cout << "d=" << d << "\n";
+    std::cout << "r="<< radius_player1_puck << "\n";
+
+    return result;
 }
