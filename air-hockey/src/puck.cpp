@@ -4,8 +4,9 @@
 #include "sizes.h"
 
 Puck::Puck() {
-    position = glm::vec2(WIDTH_AREA / 2.0f, HEIGHT_AREA / 2.0f);
+    position = glm::vec2(WIDTH_AREA / 2.0f - 100, HEIGHT_AREA / 2.0f - 200);
     color = glm::vec3(BLUE[0], BLUE[1], BLUE[2]);
+    direction = glm::vec2(0.0f, 0.0f);
     radius = 3;
     size = 5;
     speed = 0;
@@ -21,5 +22,9 @@ void Puck::draw() {
 }
 
 void Puck::move_puck(float distance) {
-    set_position_y(get_position_y() + distance);
+    position = position + (direction * distance);
 }
+
+
+
+

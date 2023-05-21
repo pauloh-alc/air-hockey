@@ -26,12 +26,9 @@ void Player::draw()
 bool Player::check_collision(Puck& puck) {
 
     glm::vec2 distance_player1_puck = position - puck.get_position();
-    float radius_player1_puck = radius * size + puck.get_radius() * puck.get_size();
+    float radius_player1_puck = (radius * size) + (puck.get_radius() * puck.get_size());
 
     bool result = glm::length(distance_player1_puck) < radius_player1_puck;
-    float d = glm::length(distance_player1_puck);
-    std::cout << "d=" << d << "\n";
-    std::cout << "r="<< radius_player1_puck << "\n";
 
     return result;
 }
