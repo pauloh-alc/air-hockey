@@ -7,7 +7,7 @@ Table::Table() {
     lenght = WINDOW_WIDTH;
     background_color = glm::vec3(BLACK[0], BLACK[1], BLACK[2]);
     border_color = glm::vec3(WHITE[0], WHITE[1], WHITE[2]);
-    border_width = 5.0f;
+    border_width = 10.0f;
 }
 
 void Table::draw() {
@@ -20,6 +20,7 @@ void Table::draw() {
     glEnd();
 
     glColor3f(border_color.r, border_color.g, border_color.b);
+        glEnable(GL_LINE_SMOOTH);
         glLineWidth(border_width);
         glBegin(GL_LINE_LOOP);
         glVertex2d(0.0, 0.0);
