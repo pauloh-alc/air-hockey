@@ -2,7 +2,7 @@
 #include "colors.h"
 #include "shapes.h"
 #include "sizes.h"
-
+#include <iostream>
 AI::AI() {
   position = glm::vec2(WIDTH_AREA / 2.0f, HEIGHT_AREA - 100.0);
   direction = LEFT;
@@ -31,4 +31,13 @@ void AI::move(float distantion){
     position.x -= distantion;
     if(position.x < (radius * size)) direction = RIGHT;
   }
+}
+
+bool AI::check_collision(Puck &puck) {
+  glm::vec2 distance_player2_puck = position - puck.get_position();
+  float radius_player2_puck = (radius * size) + (puck.get_radius() * puck.get_size());
+
+  bool result = glm::length(distance_player2_puck) < radius_player2_puck;
+  std::cout << result;
+  return result;
 }

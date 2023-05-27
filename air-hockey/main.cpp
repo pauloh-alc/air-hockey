@@ -51,12 +51,6 @@ void set_projection() {
 
 void release_key(int key, int x, int y) { keys.erase(key); }
 
-void timer(int v){
-  glutTimerFunc(1000.0/FPS, timer, 0);
-  puck.move_puck(9);
-  player2.move(10);
-  glutPostRedisplay();
-}
 
 void verify_collision() {
   if (player1.check_collision(puck)) {
@@ -71,7 +65,22 @@ void verify_collision() {
 
     puck.set_direction(direction_x, direction_y);
   }
+
+  if (player2.check_collision(puck)) {
+    float player2_pos_x = player2.get_position_x();
+    float player2_pos_y = player2.get_position_y();
+
+    float puck_pos_x = puck.get_position_x();
+    float puck_pos_y = puck.get_position_y();
+
+    float direction_x = puck_pos_x - player2_pos_x;
+    float direction_y = puck_pos_y - player2_pos_y;
+
+    puck.set_direction(direction_x, direction_y);
+  }
+
 }
+
 
 void move_player1(int key, int x, int y) {
   keys.insert(key);
@@ -97,12 +106,21 @@ void move_player1(int key, int x, int y) {
   player1.set_position_x(player1_x);
   player1.set_position_y(player1_y);
 
-  if (player1.check_collision(puck)) {
+  if (player1.check_collision(puck) || player2.check_collision(puck)) {
     verify_collision();
   }
 
   glutPostRedisplay();
 }
+
+void timer(int v){
+  glutTimerFunc(1000.0/FPS, timer, 0);
+  puck.move_puck(9);
+  player2.move(10);
+  move_player1(1,1,1);
+  glutPostRedisplay();
+}
+
 
 void draw() {
   glClear(GL_COLOR_BUFFER_BIT);
