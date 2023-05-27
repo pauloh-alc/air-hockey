@@ -3,59 +3,41 @@
 #include "glm/glm.hpp"
 
 class Puck {
-    private:
-        glm::vec2 position;
-        glm::vec2 direction;
-        float radius;
-        glm::vec3 color;
-        float size;
-        float speed;
+private:
+  glm::vec2 position;
+  glm::vec2 direction;
+  float radius;
+  glm::vec3 color;
+  float size;
+  float speed;
 
-    public:
-        Puck();
-        void draw();
+public:
+  Puck();
+  void draw();
 
-        glm::vec2 get_position() {
-            return position;
-        }
+  glm::vec2 get_position() { return position; }
 
-        float get_position_x() {
-            return position.x;
-        }
+  float get_position_x() { return position.x; }
 
-        float get_position_y() {
-            return position.y;
-        }
+  float get_position_y() { return position.y; }
 
-        float get_radius() {
-            return radius;
-        }
+  float get_radius() { return radius; }
 
-        float get_size() {
-            return size;
-        }
+  float get_size() { return size; }
 
-        void set_position(glm::vec2 value) {
-            position = value;
-        }
+  void set_position(glm::vec2 value) { position = value; }
 
-        void set_position_x(float x) {
-            position.x = x;
-        }
+  void set_position_x(float x) { position.x = x; }
 
-        void set_position_y(float y) {
-            position.y = y;
-        }
+  void set_position_y(float y) { position.y = y; }
 
-        void set_direction(float x, float y) {
-            direction = glm::normalize(glm::vec2(x, y));
-        }
+  void set_direction(float x, float y) {
+    direction = glm::normalize(glm::vec2(x, y));
+  }
 
-        glm::vec2 get_direction() {
-            return direction;
-        }
+  glm::vec2 get_direction() { return direction; }
 
-        void move_puck(float distance);
+  void move_puck(float distance);
 };
 
 #endif // PUCK_H
