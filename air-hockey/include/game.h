@@ -2,8 +2,8 @@
 #define GAME_H
 
 class Game {
-    public:
-        Game();
+public:
+  Game();
 };
 
 #endif // GAME_H
