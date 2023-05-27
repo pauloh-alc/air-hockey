@@ -55,6 +55,7 @@ void release_key(int key, int x, int y) {
 void timer(int v){
     glutTimerFunc(1000.0/FPS, timer, 0);
     puck.move_puck(0.7);
+    player2.move(10);
     glutPostRedisplay();
 }
 

@@ -5,6 +5,7 @@
 
 AI::AI() {
     position = glm::vec2(WIDTH_AREA / 2.0f, HEIGHT_AREA - 100.0);
+    direction = LEFT;
     color = glm::vec3(WHITE[0], WHITE[1], WHITE[2]);
     radius = 3;
     size = 15;
@@ -18,4 +19,16 @@ void AI::draw() {
         glColor3f(color.r, color.g, color.b);
         Shapes::circle(36, radius);
     glPopMatrix();
+}
+
+
+void AI::move(float distantion){
+    if(direction == RIGHT){
+        position.x += distantion;
+        if(position.x > WIDTH_AREA - (radius * size)) direction = LEFT;
+    }
+    else{
+        position.x -= distantion;
+        if(position.x < (radius * size)) direction = RIGHT;
+    }
 }
