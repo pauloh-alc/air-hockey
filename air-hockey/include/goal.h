@@ -3,22 +3,19 @@
 #include <glm/glm.hpp>
 
 class Goal {
-    private:
-        glm::vec2 position;
-        float width;
-        float lenght;
-        glm::vec3 background_color;
-    public:
-        Goal();
-        void draw();
+private:
+  glm::vec2 position;
+  float width;
+  float lenght;
+  glm::vec3 background_color;
 
-        void set_position_x(float x) {
-            position.x = x;
-        }
+public:
+  Goal();
+  void draw();
 
-        void set_position_y(float y) {
-            position.y = y;
-        }
+  void set_position_x(float x) { position.x = x; }
+
+  void set_position_y(float y) { position.y = y; }
 };
 
 #endif // GOAL_H
