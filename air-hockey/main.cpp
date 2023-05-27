@@ -52,10 +52,10 @@ void set_projection() {
 void release_key(int key, int x, int y) { keys.erase(key); }
 
 void timer(int v){
-    glutTimerFunc(1000.0/FPS, timer, 0);
-    puck.move_puck(0.7);
-    player2.move(10);
-    glutPostRedisplay();
+  glutTimerFunc(1000.0/FPS, timer, 0);
+  puck.move_puck(9);
+  player2.move(10);
+  glutPostRedisplay();
 }
 
 void verify_collision() {
@@ -76,18 +76,14 @@ void verify_collision() {
 void move_player1(int key, int x, int y) {
   keys.insert(key);
 
-  int step = 8;
+  int step = 15;
   float player1_x = player1.get_position_x();
   float player1_y = player1.get_position_y();
 
   float limit_max_x = WIDTH_AREA - (player1.get_size() * player1.get_radius());
-  float limit_max_y =
-      (HEIGHT_AREA - (player1.get_size() * player1.get_radius())) / 2.0f -
-      table.get_border_width();
-  float limit_min_x =
-      player1.get_size() * player1.get_radius() + table.get_border_width();
-  float limit_min_y =
-      player1.get_size() * player1.get_radius() + table.get_border_width();
+  float limit_max_y = (HEIGHT_AREA - (player1.get_size() * player1.get_radius())) / 2.0f - table.get_border_width();
+  float limit_min_x = player1.get_size() * player1.get_radius() + table.get_border_width();
+  float limit_min_y = player1.get_size() * player1.get_radius() + table.get_border_width();
 
   if (keys.count(GLUT_KEY_LEFT) && player1_x > limit_min_x)
     player1_x -= step;

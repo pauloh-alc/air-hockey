@@ -12,9 +12,9 @@ Goal::Goal() {
 
 void Goal::draw() {
   glPushMatrix();
-  glTranslatef(position.x, position.y, 0);
-  glScalef(width, lenght, 1);
-  glColor3f(background_color.r, background_color.g, background_color.b);
-  Shapes::square();
+      glTranslatef(position.x, position.y, 0);
+      glScalef(width, lenght, 1);
+      glColor3f(background_color.r, background_color.g, background_color.b);
+      Shapes::square();
   glPopMatrix();
 }

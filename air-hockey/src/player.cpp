@@ -15,18 +15,17 @@ Player::Player() {
 
 void Player::draw() {
   glPushMatrix();
-  glTranslatef(position.x, position.y, 0);
-  glScalef(size, size, 1);
-  glColor3f(color.r, color.g, color.b);
-  Shapes::circle(36, radius);
+      glTranslatef(position.x, position.y, 0);
+      glScalef(size, size, 1);
+      glColor3f(color.r, color.g, color.b);
+      Shapes::circle(36, radius);
   glPopMatrix();
 }
 
 bool Player::check_collision(Puck &puck) {
 
   glm::vec2 distance_player1_puck = position - puck.get_position();
-  float radius_player1_puck =
-      (radius * size) + (puck.get_radius() * puck.get_size());
+  float radius_player1_puck = (radius * size) + (puck.get_radius() * puck.get_size());
 
   bool result = glm::length(distance_player1_puck) < radius_player1_puck;
 

@@ -22,5 +22,29 @@ void Puck::draw() {
 }
 
 void Puck::move_puck(float distance) {
-  position = position + (direction * distance);
+
+  glm::vec2 new_position = position + (direction * distance);
+
+  float puck_radius = get_radius();
+  float table_width = WIDTH_AREA - (2 * puck_radius);
+  float table_height = HEIGHT_AREA - (2 * puck_radius);
+
+  if (new_position.x - puck_radius < 0) {
+      new_position.x = puck_radius;
+      direction.x = -direction.x;
+  } else if (new_position.x + puck_radius > table_width) {
+      new_position.x = table_width - puck_radius;
+      direction.x = -direction.x;
+  }
+
+  if (new_position.y - puck_radius < 0) {
+      new_position.y = puck_radius;
+      direction.y = -direction.y;
+  } else if (new_position.y + puck_radius > table_height) {
+      new_position.y = table_height - puck_radius;
+      direction.y = -direction.y;
+  }
+
+  position = new_position;
 }
+
