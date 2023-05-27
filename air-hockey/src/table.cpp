@@ -22,7 +22,7 @@ void Table::draw() {
     glEnd();
 
     glPushMatrix();
-        glTranslatef(WINDOW_WIDTH / 2.0f, HEIGHT_AREA / 2.0F, 1.0f);
+        glTranslatef(WINDOW_WIDTH / 2.0f, HEIGHT_AREA / 2.0f, 1.0f);
         glScalef(WINDOW_WIDTH, 4.5f, 1);
         glColor3f(WHITE[0], WHITE[1], WHITE[2]);
         Shapes::square();
@@ -30,9 +30,16 @@ void Table::draw() {
 
     glPushMatrix();
         glTranslatef(WINDOW_WIDTH / 2.0f, HEIGHT_AREA / 2.0F, 1.0f);
-        glScalef(6, 6, 1);
+        glScalef(8, 8, 1);
         glColor3f(WHITE[0], WHITE[1], WHITE[2]);
         Shapes::circle(25, 3);
+    glPopMatrix();
+
+    glPushMatrix();
+        glTranslatef(WINDOW_WIDTH / 2.0f, HEIGHT_AREA / 2.0f, 1.0f);
+        glScalef(2.5, 2.5, 1.5);
+        glColor3f(0, 0, 0);
+        Shapes::circle(15, 3);
     glPopMatrix();
 
     glColor3f(border_color.r, border_color.g, border_color.b);
