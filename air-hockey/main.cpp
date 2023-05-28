@@ -22,6 +22,8 @@ AI player2;
 Goal goal1;
 Goal goal2;
 std::set<int> keys;
+bool goal_scored = false;
+int TIME_SLEEP = 1800;
 
 int score_player_1 = 0;
 int score_player_2 = 0;
@@ -67,7 +69,6 @@ void verify_collision() {
     float direction_y = puck_pos_y - player1_pos_y;
 
     puck.set_direction(direction_x, direction_y);
-    //score_player_1++;
   }
 
   if (player2.check_collision(puck)) {
@@ -81,9 +82,7 @@ void verify_collision() {
     float direction_y = puck_pos_y - player2_pos_y;
 
     puck.set_direction(direction_x, direction_y);
-    //score_player_2++;
   }
-
 }
 
 
@@ -119,23 +118,32 @@ void move_player1(int key, int x, int y) {
 }
 
 void verify_goals() {
-  std::cout << "entrou";
   if (goal1.check_collision(puck)) {
-    std::cout <<"gol1";
-    score_player_1++;
-  }
-
-  if (goal2.check_collision(puck)) {
     score_player_2++;
+    puck.set_position_x(WIDTH_AREA/2.0f);
+    puck.set_position_y(HEIGHT_AREA/2.0f);
+    goal_scored = true;
+  }
+  if (goal2.check_collision(puck)) {
+    score_player_1++;
+    puck.set_position_x(WIDTH_AREA/2.0f);
+    puck.set_position_y(HEIGHT_AREA/2.0f);
+    goal_scored = true;
   }
 }
 
 void timer(int v){
   glutTimerFunc(1000.0/FPS, timer, 0);
-  puck.move_puck(9);
-  player2.move(10);
+  if (!goal_scored) {
+    puck.move_puck(9);
+  }
+  player2.move(12);
   move_player1(1,1,1);
   verify_goals();
+
+  if (goal_scored) {
+    glutTimerFunc(TIME_SLEEP, [](int) { goal_scored = false;}, 0);
+  }
   glutPostRedisplay();
 }
 
@@ -154,8 +162,8 @@ void draw_score() {
   float pos_score_player_1_axis_x = 15.0f;
   float pos_score_player_1_axis_y = 15.0f;
 
-  float pos_score_player_2_axis_x = WIDTH_AREA - 100.0f;
-  float pos_score_player_2_axis_y = HEIGHT_AREA - 25.0f;
+  float pos_score_player_2_axis_x = WIDTH_AREA - 115.0f;
+  float pos_score_player_2_axis_y = HEIGHT_AREA - 30.0f;
 
   glColor3f(RED[0], RED[1], RED[2]);
   draw_text(("Player 01: " + std::to_string(score_player_1)).c_str(), pos_score_player_1_axis_x, pos_score_player_1_axis_y, GLUT_BITMAP_HELVETICA_18);
@@ -167,12 +175,17 @@ void draw_score() {
 void draw() {
   glClear(GL_COLOR_BUFFER_BIT);
   set_projection();
+
   table.draw();
+
   puck.draw();
+
   player1.draw();
   player2.draw();
+
   goal1.set_position_y(14.0f);
   goal1.draw();
+
   goal2.set_position_y(HEIGHT_AREA - 14.0f);
   goal2.draw();
 

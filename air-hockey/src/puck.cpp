@@ -4,7 +4,7 @@
 #include "sizes.h"
 
 Puck::Puck() {
-  position = glm::vec2(WIDTH_AREA / 2.0f - 100, HEIGHT_AREA / 2.0f - 200);
+  position = glm::vec2(WIDTH_AREA / 2.0f, HEIGHT_AREA / 2.0f);
   color = glm::vec3(BLUE[0], BLUE[1], BLUE[2]);
   direction = glm::vec2(0.0f, 0.0f);
   radius = 3;
