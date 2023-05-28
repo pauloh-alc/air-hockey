@@ -81,6 +81,10 @@ Projeto Air Hockey
 
 ![Screenshot](img/air-hockey-exemplo.png)
 
+## Resultado:
+
+![Screenshot](img/resultado.png)
+
 ## Versão da estrutura do projeto:
 1.0.0
 
