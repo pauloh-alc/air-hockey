@@ -9,7 +9,6 @@ Puck::Puck() {
   direction = glm::vec2(0.0f, 0.0f);
   radius = 3;
   size = 5;
-  speed = 0;
 }
 
 void Puck::draw() {

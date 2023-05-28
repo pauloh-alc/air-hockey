@@ -9,7 +9,6 @@ private:
   float radius;
   glm::vec3 color;
   float size;
-  float speed;
 
 public:
   Puck();
@@ -33,6 +32,10 @@ public:
 
   void set_direction(float x, float y) {
     direction = glm::normalize(glm::vec2(x, y));
+  }
+
+  void reset_diretion(float x, float y) {
+    direction = glm::vec2(x, y);
   }
 
   glm::vec2 get_direction() { return direction; }

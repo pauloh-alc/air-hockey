@@ -1,7 +1,7 @@
 #ifndef GOAL_H
 #define GOAL_H
 #include <glm/glm.hpp>
-#include "puck.h""
+#include "puck.h"
 
 class Goal {
 private:

@@ -22,8 +22,6 @@ AI player2;
 Goal goal1;
 Goal goal2;
 std::set<int> keys;
-bool goal_scored = false;
-int TIME_SLEEP = 1800;
 
 int score_player_1 = 0;
 int score_player_2 = 0;
@@ -85,7 +83,6 @@ void verify_collision() {
   }
 }
 
-
 void move_player1(int key, int x, int y) {
   keys.insert(key);
 
@@ -122,28 +119,29 @@ void verify_goals() {
     score_player_2++;
     puck.set_position_x(WIDTH_AREA/2.0f);
     puck.set_position_y(HEIGHT_AREA/2.0f);
-    goal_scored = true;
+    puck.reset_diretion(0,0);
   }
   if (goal2.check_collision(puck)) {
     score_player_1++;
     puck.set_position_x(WIDTH_AREA/2.0f);
     puck.set_position_y(HEIGHT_AREA/2.0f);
-    goal_scored = true;
+    puck.reset_diretion(0,0);
+  }
+
+  bool end_game = score_player_1 == 8 || score_player_2 == 8;
+
+  if (end_game) {
+    score_player_1 = 0;
+    score_player_2 = 0;
   }
 }
 
 void timer(int v){
   glutTimerFunc(1000.0/FPS, timer, 0);
-  if (!goal_scored) {
-    puck.move_puck(9);
-  }
+  puck.move_puck(9);
   player2.move(12);
   move_player1(1,1,1);
   verify_goals();
-
-  if (goal_scored) {
-    glutTimerFunc(TIME_SLEEP, [](int) { goal_scored = false;}, 0);
-  }
   glutPostRedisplay();
 }
 

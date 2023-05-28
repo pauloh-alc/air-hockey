@@ -15,7 +15,6 @@ class AI {
     float radius;
     glm::vec3 color;
     float size;
-    float speed;
 
   public:
     AI();

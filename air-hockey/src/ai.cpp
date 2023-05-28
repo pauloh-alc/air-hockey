@@ -9,7 +9,6 @@ AI::AI() {
   color = glm::vec3(WHITE[0], WHITE[1], WHITE[2]);
   radius = 3;
   size = 15;
-  speed = 0;
 }
 
 void AI::draw() {
