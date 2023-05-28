@@ -10,6 +10,7 @@
 #include <sizes.h>
 #include <table.h>
 #define FPS 60
+#define WIN 2
 
 using namespace std;
 
@@ -114,6 +115,16 @@ void move_player1(int key, int x, int y) {
   glutPostRedisplay();
 }
 
+void draw_text(const char* str, float x, float y, void* font) {
+  glRasterPos2f(x, y);
+
+  int i = 0;
+  while (str[i] != '\0') {
+    glutBitmapCharacter(font, str[i]);
+    i++;
+  }
+}
+
 void verify_goals() {
   if (goal1.check_collision(puck)) {
     score_player_2++;
@@ -127,13 +138,6 @@ void verify_goals() {
     puck.set_position_y(HEIGHT_AREA/2.0f);
     puck.reset_diretion(0,0);
   }
-
-  bool end_game = score_player_1 == 8 || score_player_2 == 8;
-
-  if (end_game) {
-    score_player_1 = 0;
-    score_player_2 = 0;
-  }
 }
 
 void timer(int v){
@@ -143,16 +147,6 @@ void timer(int v){
   move_player1(1,1,1);
   verify_goals();
   glutPostRedisplay();
-}
-
-void draw_text(const char* str, float x, float y, void* font) {
-  glRasterPos2f(x, y);
-
-  int i = 0;
-  while (str[i] != '\0') {
-    glutBitmapCharacter(font, str[i]);
-    i++;
-  }
 }
 
 void draw_score() {
@@ -169,6 +163,35 @@ void draw_score() {
   glColor3f(WHITE[0], WHITE[1], WHITE[2]);
   draw_text(("Player 02: " + std::to_string(score_player_2)).c_str(), pos_score_player_2_axis_x, pos_score_player_2_axis_y, GLUT_BITMAP_HELVETICA_18);
 }
+
+void verify_win() {
+  bool end_game = score_player_1 >= WIN || score_player_2 >= WIN;
+
+  if (end_game) {
+    float end_x = WIDTH_AREA / 2.0f - 45.0;
+    float end_y = HEIGHT_AREA / 2.0f - 100.0;
+
+    int player = 1;
+    if (score_player_1 >= WIN) {
+        glColor3f(RED[0], RED[1], RED[2]);
+        player = 1;
+        end_y = HEIGHT_AREA / 2.0f - 100.0;
+    } else if (score_player_2 >= WIN) {
+        glColor3f(WHITE[0], WHITE[1], WHITE[2]);
+        player = 2;
+        end_y = HEIGHT_AREA / 2.0f + 100.0;
+    }
+
+    glutTimerFunc(3000, [](int) {
+        score_player_1 = 0;
+        score_player_2 = 0;
+    }, 0);
+
+    std::string text = "WINNER:" + std::to_string(player);
+    draw_text(text.c_str(), end_x, end_y, GLUT_BITMAP_HELVETICA_18);
+  }
+}
+
 
 void draw() {
   glClear(GL_COLOR_BUFFER_BIT);
@@ -187,6 +210,7 @@ void draw() {
   goal2.set_position_y(HEIGHT_AREA - 14.0f);
   goal2.draw();
 
+  verify_win();
   draw_score();
 
   glutSwapBuffers();
