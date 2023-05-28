@@ -14,10 +14,10 @@ AI::AI() {
 
 void AI::draw() {
   glPushMatrix();
-      glTranslatef(position.x, position.y, 0);
-      glScalef(size, size, 1);
-      glColor3f(color.r, color.g, color.b);
-      Shapes::circle(36, radius);
+    glTranslatef(position.x, position.y, 0);
+    glScalef(size, size, 1);
+    glColor3f(color.r, color.g, color.b);
+    Shapes::circle(36, radius);
   glPopMatrix();
 }
 
