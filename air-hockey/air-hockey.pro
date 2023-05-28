@@ -11,7 +11,6 @@ SOURCES += \
         src/puck.cpp \
         src/goal.cpp \
         src/player.cpp \
-        src/game.cpp \
         src/table.cpp \
         src/shapes.cpp \
         main.cpp
@@ -22,7 +21,6 @@ HEADERS += \
     include/puck.h \
     include/goal.h \
     include/player.h \
-    include/game.h \
     include/sizes.h \
     include/table.h \
     include/shapes.h
