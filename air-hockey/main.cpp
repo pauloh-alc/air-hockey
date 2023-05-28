@@ -23,6 +23,9 @@ Goal goal1;
 Goal goal2;
 std::set<int> keys;
 
+int score_player_1 = 0;
+int score_player_2 = 0;
+
 void init() {
   glClearColor(BACKGROUND_COLOR_WINDOW[0], BACKGROUND_COLOR_WINDOW[1],
                BACKGROUND_COLOR_WINDOW[2], BACKGROUND_COLOR_WINDOW[3]);
@@ -64,6 +67,7 @@ void verify_collision() {
     float direction_y = puck_pos_y - player1_pos_y;
 
     puck.set_direction(direction_x, direction_y);
+    //score_player_1++;
   }
 
   if (player2.check_collision(puck)) {
@@ -77,6 +81,7 @@ void verify_collision() {
     float direction_y = puck_pos_y - player2_pos_y;
 
     puck.set_direction(direction_x, direction_y);
+    //score_player_2++;
   }
 
 }
@@ -113,14 +118,51 @@ void move_player1(int key, int x, int y) {
   glutPostRedisplay();
 }
 
+void verify_goals() {
+  std::cout << "entrou";
+  if (goal1.check_collision(puck)) {
+    std::cout <<"gol1";
+    score_player_1++;
+  }
+
+  if (goal2.check_collision(puck)) {
+    score_player_2++;
+  }
+}
+
 void timer(int v){
   glutTimerFunc(1000.0/FPS, timer, 0);
   puck.move_puck(9);
   player2.move(10);
   move_player1(1,1,1);
+  verify_goals();
   glutPostRedisplay();
 }
 
+void draw_text(const char* str, float x, float y, void* font) {
+  glRasterPos2f(x, y);
+
+  int i = 0;
+  while (str[i] != '\0') {
+    glutBitmapCharacter(font, str[i]);
+    i++;
+  }
+}
+
+void draw_score() {
+
+  float pos_score_player_1_axis_x = 15.0f;
+  float pos_score_player_1_axis_y = 15.0f;
+
+  float pos_score_player_2_axis_x = WIDTH_AREA - 100.0f;
+  float pos_score_player_2_axis_y = HEIGHT_AREA - 25.0f;
+
+  glColor3f(RED[0], RED[1], RED[2]);
+  draw_text(("Player 01: " + std::to_string(score_player_1)).c_str(), pos_score_player_1_axis_x, pos_score_player_1_axis_y, GLUT_BITMAP_HELVETICA_18);
+
+  glColor3f(WHITE[0], WHITE[1], WHITE[2]);
+  draw_text(("Player 02: " + std::to_string(score_player_2)).c_str(), pos_score_player_2_axis_x, pos_score_player_2_axis_y, GLUT_BITMAP_HELVETICA_18);
+}
 
 void draw() {
   glClear(GL_COLOR_BUFFER_BIT);
@@ -133,6 +175,8 @@ void draw() {
   goal1.draw();
   goal2.set_position_y(HEIGHT_AREA - 14.0f);
   goal2.draw();
+
+  draw_score();
 
   glutSwapBuffers();
 }

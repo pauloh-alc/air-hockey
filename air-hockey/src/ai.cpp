@@ -38,6 +38,5 @@ bool AI::check_collision(Puck &puck) {
   float radius_player2_puck = (radius * size) + (puck.get_radius() * puck.get_size());
 
   bool result = glm::length(distance_player2_puck) < radius_player2_puck;
-  std::cout << result;
   return result;
 }

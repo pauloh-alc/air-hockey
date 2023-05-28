@@ -1,6 +1,7 @@
 #ifndef GOAL_H
 #define GOAL_H
 #include <glm/glm.hpp>
+#include "puck.h""
 
 class Goal {
 private:
@@ -16,6 +17,8 @@ public:
   void set_position_x(float x) { position.x = x; }
 
   void set_position_y(float y) { position.y = y; }
+
+  bool check_collision(Puck &puck);
 };
 
 #endif // GOAL_H

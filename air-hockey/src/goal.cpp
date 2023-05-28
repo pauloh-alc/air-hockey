@@ -2,6 +2,8 @@
 #include "colors.h"
 #include "shapes.h"
 #include "sizes.h"
+#include "puck.h"
+#include "iostream"
 
 Goal::Goal() {
   position = glm::vec2(WIDTH_AREA / 2.0f, 14.0f);
@@ -18,3 +20,9 @@ void Goal::draw() {
       Shapes::square();
   glPopMatrix();
 }
+
+
+bool Goal::check_collision(Puck& puck) {
+  return false;
+}
+
