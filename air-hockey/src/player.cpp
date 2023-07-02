@@ -10,7 +10,7 @@ Player::Player() {
   color = glm::vec3(RED[0], RED[1], RED[2]);
   radius = 3;
   size = 15;
-  speed = 0;
+
 }
 
 void Player::draw() {
